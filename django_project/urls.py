@@ -19,10 +19,12 @@ from django.conf.urls import include
 from . import views
 
 urlpatterns = [
+    path('frontend/', include('frontend.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),  # new
-    path('frontend/', include('frontend.urls')),
+    path('django_project/',include('frontend.urls')),
     path('', include('frontend.urls')),
+
 
 ]
 handler404 = 'django_project.views.view_404'

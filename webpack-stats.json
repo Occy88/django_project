@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"main":[{"name":"main.js","path":"/home/caramel/PycharmProjects/django_project/dist/main.js"}]},"error":"ModuleNotFoundError","message":"Module not found: Error: Can't resolve './style.scss' in '/home/caramel/PycharmProjects/django_project/frontend/static/frontend/components/ExamplePage'"}
+{"status":"done","chunks":{"main":[{"name":"main.js","path":"/home/caramel/PycharmProjects/django_project/dist/main.js"}]}}
