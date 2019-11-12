@@ -25,13 +25,10 @@ class Header extends React.Component {
         super(props);
         this.state = {
             width: 0, height: 0,
-            company: DEFAULT_COMPANY,
-
             links: [
-                {'url': '/example_page', id: 1, 'text': 'example_page'},
+                {'url': '/example-page', id: 1, 'text': 'example-page'},
             ]
         };
-        console.log(this.state.company);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.redirect = this.redirect.bind(this);
     }
@@ -54,24 +51,7 @@ class Header extends React.Component {
 
     }
 
-    selectCompany(object) {
-
-        if (this.state.company === null || object.id !== this.state.company.id) {
-
-            AccountService.setCompany(object).then((d) => {
-                if (this.state.company === null || object.id !== this.state.company.id) {
-                    location.reload()
-                }
-            });
-        }
-    }
-
     render() {
-        let company_logo =
-            <div className="nav-brand ">
-                <Link to={'/'}>
-                </Link>
-            </div>;
 
         let settings =
             <div className="nav-settings">
@@ -82,8 +62,6 @@ class Header extends React.Component {
                         button_fill={<img style={{width: '30px'}}
                                           src={STATIC_URL + settings_svg}/>}
                         item_list={[
-                            <div className='nav-item-content'>
-                                <CompanyList changeCompany={this.selectCompany.bind(this)}/></div>,
                             <div className='nav-item-content'>
                                 <LanguageSelect/>
                             </div>,
@@ -119,12 +97,9 @@ class Header extends React.Component {
         return (
             <div className={'Header'}>
                 <div className={'nav-bar'}>
-                    {/*companylogo maximum widht needed is 100px*/}
                     {/*custom nav is the rest*/}
                     {custom_nav}
                     {/*companylogo maximum widht needed is 100px*/}
-
-                    {company_logo}
 
                     {/*settings maximum width needed is 200px*/}
                     {settings}

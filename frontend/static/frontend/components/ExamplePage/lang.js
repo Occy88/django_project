@@ -1,34 +1,19 @@
 const languages = {
     'en-us': {
-        success: "success",
-        fail: "fail",
-        submit: "submit",
-        error: "error",
-        invalidForm: "Form error:",
+        example_text: 'Now serving the example page, Project is online and functional'
     },
     'fr': {
-        success: "success",
-        fail: "fail",
-        submit: "submit",
-        error: "erreur",
-        invalidForm: "Form error:",
-
+        example_text: 'salut'
 
     },
     'it': {
-        success: "success",
-        fail: "fail",
-        submit: "submit",
-        error: "error",
-        invalidForm: "Form error:",
+        example_text: 'porco'
+
 
     },
     'es': {
-        success: "success",
-        fail: "fail",
-        submit: "submit",
-        error: "error",
-        invalidForm: "Form error:",
+        example_text: 'hola'
+
 
     },
 

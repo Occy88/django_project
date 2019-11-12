@@ -18,8 +18,8 @@
     console.log("LOADED");
     {#    DECLARE THE STATIC URL TO BE USED WITHIN THE APPLICATION WHEN LOADING SERVER SAVED PERMANENT MEDIA (Not much for this project so it's enough#}
     let STATIC_URL = "{% get_static_prefix %}";
+    console.log(STATIC_URL);
     let languages = {{ choices|safe }};
-    let serve_scan_page_only = {{ serve_scan_page_only|safe }};
 </script>
 <div id="app">
 

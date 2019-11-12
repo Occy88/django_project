@@ -1,6 +1,6 @@
 import React from 'react'
 import languages from "./lang.js";
-import './style.css';
+import './style.scss';
 
 let lang = languages[document.documentElement.lang];
 /**
@@ -22,8 +22,8 @@ export default class ExamplePage extends React.Component {
 
     render() {
         return (
-            <div>
-                Now serving the example page, Project is online and functional
+            <div className={'ExamplePage'}>
+                {lang.example_text}
             </div>
 
         )

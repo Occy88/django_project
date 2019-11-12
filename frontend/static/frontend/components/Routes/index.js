@@ -21,7 +21,7 @@ export default class Routes extends React.Component {
             <Router>
                 <Header/>
                 <Switch {...this.props}>
-                    <Route path={app_url_prefix + "/example_page"} render={(routeProps) => (
+                    <Route path={app_url_prefix + "/example-page"} render={(routeProps) => (
                         <ExamplePage {...routeProps} />
                     )}/>
                     <Route path="*" render={() => {

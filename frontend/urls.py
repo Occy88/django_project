@@ -11,5 +11,6 @@ urlpatterns = [
     # path('stock_detail/', views.StockList.as_view()),
     url(r'^/$', views.ServeApp.as_view()),
     url(r'^$', views.ServeApp.as_view()),
+
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
