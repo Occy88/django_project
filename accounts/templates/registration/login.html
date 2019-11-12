@@ -1,0 +1,19 @@
+{% extends '../accounts/templates/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <title id="login_page_title">Login</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container" align="center">
+            <span class="main">Welcome</span>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-dark" type="submit">Login</button>
+        </form>
+    </div>
+{% endblock %}

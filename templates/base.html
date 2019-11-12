@@ -1,0 +1,56 @@
+{#this file is the base page for the whole website.#}
+{% load static %}
+
+<html lang="en">
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/external_libraries/ioicons.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/banner.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/external_libraries/google_lato.css' %}" type="text/css"/>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://fb.me/react-with-addons-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script type="text/javascript" src="{% static 'js/common/banner.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>BASE</title>
+
+    <div id="banner" class="banner">
+        <nav role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul id="menu">
+{#                    <a href="/company_manager/">#}
+                        <li>Main Menu</li>
+{#                    </a>#}
+{#                    <a href="/company_manager/qr_scanner/">#}
+                        <li>Scan Qr</li>
+{#                    </a>#}
+{#                    <a href="/accounts/logout/">#}
+                        <li>Logout</li>
+{#                    </a>#}
+{#                    <a href="{% url 'company_manager:export_archived_product_to_excel' %}">#}
+                        <li>Export Product Archived</li>
+{#                    </a>#}
+
+{#                    <a href="{% url 'company_manager:export_product_to_excel' %}">#}
+                        <li>Export Product Stock</li>
+{#                    </a>#}
+{#                    <a href="{% url 'company_manager:export_truck_to_excel' %}">#}
+                        <li>Export Truck Data</li>
+{#                    </a>#}
+
+                </ul>
+            </div>
+        </nav>
+        <div href="/accounts/login" id="login_link">Login</div>
+    </div>
+{% endblock %}
+{% block body %}
+{% endblock %}
+</html>

@@ -1,0 +1,15 @@
+*/__pycache__
+__pycache__
+*/.idea
+.idea
+*/__init__.py
+__init__.py
+docs
+staticfiles
+node_modules
+dist
+*/dist
+*/migrations
+migrations
+venv
+

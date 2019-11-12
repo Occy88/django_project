@@ -1,0 +1,108 @@
+.Header {
+    .nav-bar {
+        background-color: whitesmoke;
+        display: flex;
+        position: fixed;
+        top: 0;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        width: 100%;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 1);
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+        z-index: 99;
+
+    }
+
+    div::-webkit-scrollbar-thumb {
+        background: rgba(196, 196, 196, 0.58);
+    }
+
+
+    div::-webkit-scrollbar-track {
+        background-image: linear-gradient(rgba(235, 235, 235, 0.8), rgba(255, 0, 0, 0));
+    }
+
+    div::-webkit-scrollbar-button {
+        background-color: rgba(196, 196, 196, 0.58);
+    }
+    .side-nav{
+        width:200px;
+    }
+    .nav-brand {
+        width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links {
+        font-weight: bold;
+        font-size: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-link {
+        width: 200px;
+        text-align: center;
+        color: gray;
+    }
+
+    .nav-link:hover {
+        background-color: whitesmoke;
+    }
+
+    .nav-settings {
+        width: 250px;
+        float: left;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .nav-item, .nav-icon {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: gray;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .nav-icon {
+        margin: 0 10px 0 10px;
+        width: 100px;
+        max-width: 200px;
+        min-width: 100px;
+    }
+
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        min-width: 100%;
+
+    }
+
+    .nav-item:hover {
+        color: black;
+    }
+
+    .nav-item-content {
+        max-width: 200px;
+        padding: 5px;
+    }
+
+
+    .active {
+        background-color: rgba(235, 235, 235, 0.8);
+        color: black
+    }
+}
