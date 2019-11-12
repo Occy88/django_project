@@ -10,11 +10,10 @@ import hamburger_svg from '../../../../../static/img/Hamburger_icon.svg'
 import hamburger_active_svg from '../../../../../static/img/Hamburger_icon_active.png'
 import settings_svg from '../../../../../static/img/settings.png'
 import settings_active_svg from '../../../../../static/img/settings_active.png'
-import CompanyList from "../../../../../company_manager/static/company_manager/components/CompanyList";
 
 let lang = languages[document.documentElement.lang];
 
-const app_url_prefix = "/visualizer";
+const app_url_prefix = "/frontend";
 
 //THIS FILE REQUIRES A STATIC_URL to be defined in the base html file.
 if (STATIC_URL === undefined) {
@@ -29,8 +28,7 @@ class Header extends React.Component {
             company: DEFAULT_COMPANY,
 
             links: [
-                {'url': '/knn', id: 1, 'text': 'knn'},
-                {'url': '/deep-learning', id: 2, 'text': 'deep_learning'},
+                {'url': '/example_page', id: 1, 'text': 'example_page'},
             ]
         };
         console.log(this.state.company);
@@ -72,10 +70,6 @@ class Header extends React.Component {
         let company_logo =
             <div className="nav-brand ">
                 <Link to={'/'}>
-                    <img
-                        src={this.state.company && this.state.company.logo ? STATIC_URL + this.state.company.logo : "https://www.designevo.com/res/templates/thumb_small/blue-bar-graph-and-stock.png"}
-                        alt="Logo"
-                        style={{height: '50px'}}></img>
                 </Link>
             </div>;
 

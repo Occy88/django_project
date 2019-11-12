@@ -5,7 +5,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
     mode: 'development',
     entry: {
-        main: './visualizer/static/visualizer/components/App/App.jsx',
+        main: './frontend/static/frontend/components/App/App.jsx',
     },
     output: {
         publicPath: ""

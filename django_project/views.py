@@ -9,4 +9,4 @@ def login_redirect(request):
 def view_404(request,exception):
     # make a redirect to homepage
     # you can use the name of url or just the plain link
-    return redirect('/visualizer')  # or redirect('name-of-index-url')
+    return redirect('/frontend')  # or redirect('name-of-index-url')
