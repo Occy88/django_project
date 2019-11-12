@@ -15,18 +15,11 @@
 </head>
 <body>
 <script>
+    console.log("LOADED");
     {#    DECLARE THE STATIC URL TO BE USED WITHIN THE APPLICATION WHEN LOADING SERVER SAVED PERMANENT MEDIA (Not much for this project so it's enough#}
     let STATIC_URL = "{% get_static_prefix %}";
     let languages = {{ choices|safe }};
     let serve_scan_page_only = {{ serve_scan_page_only|safe }};
-    let DEFAULT_COMPANY = {{ company|safe }};
-    if (DEFAULT_COMPANY !== null) {
-        DEFAULT_COMPANY['str'] = DEFAULT_COMPANY.fields.name;
-        DEFAULT_COMPANY.logo = DEFAULT_COMPANY.fields.logo;
-        DEFAULT_COMPANY.name = DEFAULT_COMPANY.fields.name;
-        DEFAULT_COMPANY['sort'] = DEFAULT_COMPANY.fields.name;
-    }
-    console.log(DEFAULT_COMPANY)
 </script>
 <div id="app">
 

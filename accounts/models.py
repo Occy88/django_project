@@ -16,4 +16,4 @@ class Profile(models.Model):
     language = models.CharField(max_length=10,
                                 choices=settings.LANGUAGES,
                                 default=settings.LANGUAGE_CODE)
-    company = models.ForeignKey(locate(settings.COMPANY_INSTANCE), default=0,on_delete=models.SET_NULL, null=True)
+    # company = models.ForeignKey(locate(settings.COMPANY_INSTANCE), default=0,on_delete=models.SET_NULL, null=True)
