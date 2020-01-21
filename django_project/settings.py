@@ -52,7 +52,7 @@ else:
     SECURE_SSL_REDIRECT = False
 ALLOWED_HOSTS = ['*']
 # Application definition
-ADMINS = (('octavio', 'octavio.delser@gmail.com'),)
+ADMINS = (('your_name', 'your_email'),)
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'frontend.apps.VisualizerConfig',
