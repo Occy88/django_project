@@ -150,7 +150,7 @@ The reply is sent here, a reply can be anython from json to html.
 ### Database:
 the database tables (models) are defined in the project_name/app_name/models.py
 We are using Django rest api to facilitate serving of the data and making the whole project more managable.
-Each model has a serialization for the model located in: project_name/app_name/models.py
+Each model has a serialization for the model located in: project_name/app_name/serializers.py
 we use this class to serve the data to the user and populating the database. These are imported in the views file where the request is handled. Further details and tutorials available on the Django rest api website, however the provided examples should facilitated this process as they are already functional.
 
 
