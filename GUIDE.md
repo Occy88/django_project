@@ -77,12 +77,12 @@ project_name/
                        index.js
                        lang.js
                        style.scss
-                    apps.py
-                    models.py
-                    serializers.py
-                    tests.py
-                    urls.py
-                    views.py
+        apps.py
+        models.py
+        serializers.py
+        tests.py
+        urls.py
+        views.py
 
     some_app2/
         ...
