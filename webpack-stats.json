@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"main":[{"name":"main.js","path":"/home/caramel/PycharmProjects/django_project/dist/main.js"}]}}
+{"status":"error","chunks":{"main":[{"name":"main.js","path":"/home/caramel/PycharmProjects/django_project/dist/main.js"}]},"error":"ModuleBuildError","message":"Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\n@import \"bulma\";\n^\n      File to import not found or unreadable: bulma.\n      in /home/caramel/PycharmProjects/django_project/frontend/static/frontend/components/Will/style/style.scss (line 19, column 1)"}

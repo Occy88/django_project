@@ -1,6 +1,6 @@
 import React from 'react'
 import languages from "./lang.js";
-import './style.scss';
+import './style.css';
 
 let lang = languages[document.documentElement.lang];
 /**
@@ -16,16 +16,15 @@ export default class ExamplePage extends React.Component {
         }
     }
 
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
 
     }
 
     render() {
         return (
-            <div className={'ExamplePage'}>
-                {lang.example_text}
+            <div>
+                Now serving the example page, Project is online and functional
             </div>
-
         )
     }
 }

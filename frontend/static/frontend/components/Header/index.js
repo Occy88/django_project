@@ -8,12 +8,13 @@ import AccountService from "../../../../../accounts/static/accounts/components/A
 import Dropdown from "../../../../../static/components/Dropdown";
 import hamburger_svg from '../../../../../static/img/Hamburger_icon.svg'
 import hamburger_active_svg from '../../../../../static/img/Hamburger_icon_active.png'
-import settings_svg from '../../../../../static/img/settings.png'
-import settings_active_svg from '../../../../../static/img/settings_active.png'
+import settings_svg from '../../../../../static/img/settings1.png'
+import settings_active_svg from '../../../../../static/img/settings1_active.png'
+import CompanyList from "../../../../../company_manager/static/company_manager/components/CompanyList";
 
 let lang = languages[document.documentElement.lang];
 
-const app_url_prefix = "/frontend";
+const app_url_prefix = "/";
 
 //THIS FILE REQUIRES A STATIC_URL to be defined in the base html file.
 if (STATIC_URL === undefined) {
@@ -23,12 +24,16 @@ if (STATIC_URL === undefined) {
 class Header extends React.Component {
     constructor(props) {
         super(props);
+        console.log('DEFAULE COMPANY: ==================', DEFAULT_COMPANY)
         this.state = {
             width: 0, height: 0,
+            company: DEFAULT_COMPANY,
+
             links: [
-                {'url': '/example-page', id: 1, 'text': 'example-page'},
+                {'url': 'dashboard', id: 1, 'text': 'Dashboard'},
             ]
         };
+        console.log(this.state.company);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.redirect = this.redirect.bind(this);
     }
@@ -51,7 +56,28 @@ class Header extends React.Component {
 
     }
 
+    selectCompany(object) {
+
+        if (this.state.company === null || object.id !== this.state.company.id) {
+
+            AccountService.setCompany(object).then((d) => {
+                if (this.state.company === null || object.id !== this.state.company.id) {
+                    location.reload()
+                }
+            });
+        }
+    }
+
     render() {
+        let company_logo =
+            <div className="nav-brand ">
+                <Link to={'/'}>
+                    <img
+                        src={this.state.company && this.state.company.logo ? STATIC_URL + this.state.company.logo : "https://www.designevo.com/res/templates/thumb_small/blue-bar-graph-and-stock.png"}
+                        alt="Logo"
+                        style={{height: '50px'}}/>
+                </Link>
+            </div>;
 
         let settings =
             <div className="nav-settings">
@@ -62,6 +88,8 @@ class Header extends React.Component {
                         button_fill={<img style={{width: '30px'}}
                                           src={STATIC_URL + settings_svg}/>}
                         item_list={[
+                            <div className='nav-item-content'>
+                                <CompanyList changeCompany={this.selectCompany.bind(this)}/></div>,
                             <div className='nav-item-content'>
                                 <LanguageSelect/>
                             </div>,
@@ -76,7 +104,7 @@ class Header extends React.Component {
                         }/>
                 </div>
             </div>;
-        let url_list = this.state.links;
+        let url_list = serve_scan_page_only ? [this.state.links[3]] : this.state.links;
         let link_list = url_list.map((obj, index) =>
             <div key={obj.id}
                  className={(location.pathname === app_url_prefix + obj.url) ? "nav-link active" : "nav-link"}
@@ -85,11 +113,16 @@ class Header extends React.Component {
             </div>);
 
         let custom_nav =
-            <div className={'side-nav'}>
-                <Dropdown
-                    button_fill_active={<img style={{width: '30px'}} src={STATIC_URL + hamburger_active_svg}/>}
-                    button_fill={<img style={{width: '30px'}} src={STATIC_URL + hamburger_svg}/>}
-                    item_list={link_list}/>
+            <div className={'nav-links'}>
+                {this.state.width < 200 * (this.state.links.length + 2) ?
+                    <div className={'nav-item'}>
+
+                        <Dropdown
+                            button_fill_active={<img style={{width: '30px'}} src={STATIC_URL + hamburger_active_svg}/>}
+                            button_fill={<img style={{width: '30px'}} src={STATIC_URL + hamburger_svg}/>}
+                            item_list={link_list}/></div>
+                    : link_list
+                }
             </div>
         ;
 
@@ -97,11 +130,8 @@ class Header extends React.Component {
         return (
             <div className={'Header'}>
                 <div className={'nav-bar'}>
-                    {/*custom nav is the rest*/}
+                    {company_logo}
                     {custom_nav}
-                    {/*companylogo maximum widht needed is 100px*/}
-
-                    {/*settings maximum width needed is 200px*/}
                     {settings}
                 </div>
             </div>
@@ -109,6 +139,7 @@ class Header extends React.Component {
 
         )
     }
+
 }
 
 export default withRouter(Header);

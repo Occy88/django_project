@@ -76,7 +76,7 @@ class Dropdown extends React.Component {
         })
     }
 
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
         if ('item_list' in props) {
             this.setState({
                 item_list: props.item_list,

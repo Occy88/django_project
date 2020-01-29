@@ -141,7 +141,7 @@ export default class MultiSelect extends React.Component {
      * Parent updates with new list of objects
      * @param props : object_list
      */
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
 
         if ("object_list" in props && !MultiSelect.testArrayEqual(props.object_list, this.state.object_list)) {
             let temp_list = this.sortList([...props.object_list]);

@@ -69,7 +69,7 @@ class ListSelect extends React.Component {
      * Parent updates with new list of objects
      * @param props : object_list
      */
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
         //pre process the props (make sure they go through sorting and adding default (as in the constructor)
         let data = props.object_list;
 

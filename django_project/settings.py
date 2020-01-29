@@ -20,8 +20,8 @@ MASTER_BASE_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v8ojti^$1m0ys%*q#qv*b9(+6)am3)^t1n601$rhk!6m2#&rmi'
-API_KEY_SECRET = 'ti^$0ys%1m0ys%n601$rhk!*q#q1$rhk!6m2#&m0ys%'
+SECRET_KEY = '<A Collection of Random Characters>'
+API_KEY_SECRET = '<A Collection of Random Characters>'
 # SECURITY WARNING: don't run with debug turned on in production!
 # ENV_ROLE = 'production'
 ENV_ROLE = 'development'
@@ -54,8 +54,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 ADMINS = (('your_name', 'your_email'),)
 INSTALLED_APPS = [
+    'company_manager.apps.CompanyManagerConfig',
     'accounts.apps.AccountsConfig',
-    'frontend.apps.VisualizerConfig',
+    'frontend.apps.FrontendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -183,7 +184,24 @@ REST_FRAMEWORK = {
     # )
 }
 
+# with the bellow constants, apps can share models, this way you can swap out an app
+# for another or reuse an app for another project.
+# CONSTANTS FOR DIFFERENT APPS
+# ===[ COMPANY_MANAGER CONSTANTS ]===
+# --required
+COMPANY_OBJECT_PERMISSION = "company_manager.company_employee"
+COMPANY_IN_APP_PERMISSION = "company_employee"
+# --models
+COMPANY_MODEL = "company_manager.Company"
+COMPANY_INSTANCE = "company_manager.models.Company"
 
+# ===[ ACCOUNTS CONSTANTS ]===
+# --required
+# accounts app profile model has a one to one field with a given company
+ACCOUNTS_COMPANY_INSTANCE = COMPANY_INSTANCE
+# --models
+PROFILE_MODEL = "accounts.Profile"
+PROFILE_INSTANCE = "accounts.models.Profile"
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
