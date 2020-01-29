@@ -3,7 +3,6 @@ import './style.scss'
 import Button from "../../Button";
 import Routes from "../../../../frontend/static/frontend/components/Routes";
 import classnames from 'classnames'
-import App from '../../../../frontend/static/frontend/components/Will/App.js'
 
 export default class Toolbar extends React.Component {
     constructor(props) {
@@ -14,7 +13,6 @@ export default class Toolbar extends React.Component {
         //components to be created according to each button.
         this.componentDicts = [
             {component: Routes, w: 6, h: 4, text: 'Website'},
-            {component: App, w: 6, h: 4, text: 'Website'},
 
         ];
     }

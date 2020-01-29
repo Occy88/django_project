@@ -26,16 +26,13 @@ export default class Routes extends React.Component {
                 <Router>
                     <Header/>
                     <Switch {...this.props}>
-                        <Route path={app_url_prefix + "Dashboard"} render={(routeProps) => (
-                            <ExamplePage {...routeProps} />
+                        <Route path={app_url_prefix + "dashboard"} render={(routeProps) => (
+                            <Dashboard {...routeProps} />
                         )}/>
-                        <Route path="*" render={() => {
-                            return (
-                                <h2 style={{"textAlign": "center", "padding": "30px"}}>Page Not Found</h2>
-                            )
-                        }}/>
+                        <Route path="*" render={(routeProps) => (
+                            <ExamplePage {...routeProps}/>)}/>
                     </Switch>
-                    <Footer/>
+                    {/*<Footer/>*/}
                 </Router>
             </div>
         )

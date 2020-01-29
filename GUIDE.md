@@ -152,7 +152,26 @@ the database tables (models) are defined in the project_name/app_name/models.py
 We are using Django rest api to facilitate serving of the data and making the whole project more managable.
 Each model has a serialization for the model located in: project_name/app_name/serializers.py
 we use this class to serve the data to the user and populating the database. These are imported in the views file where the request is handled. Further details and tutorials available on the Django rest api website, however the provided examples should facilitated this process as they are already functional.
+#### Services
+Each model should have a static file for services (if you are using the models within this web app and not
+just setting up an api)
+An example services component can be found in company_manager/static/company_manager/components/service (something like that)
+these are the functions that user can use to query the database or upload things.
+Note that thanks to serialisation the user simply needs to define a dictionary and 
+the response will query the database in accordance with the provided dictionary hence no manual
+to filter by a query provided by the user you can simply call:
+ ```
+ data = query_to_dict_clean(self.request.query_params)
+ queryset = SomeModel.objects.all().filter(**data)
+```
 
+note query_to_dict_clean (found in helpers.py) converts  a query dict (passed by the requesting user) to a dictionary 
+allowing you to filter the database without knowing what the query is, or editing the query for your convenience, such as popping out a date if it was provided in a given format.. this is fine as long as the user knows
+the correct key/notation (hence you should write a good api explaining what the format is.)
+
+Please read about Serialisers, they are quite powerful, you can serve the same model in various ways with different
+serialisers such as a model with it's relations, without it's relations, just make sure you don't make any
+recurrences as this will crash your web server, if you require an example of such a usecase and are stuck, let me know and I will provide examples.
 
 
 ## SETUP AND TUTORIAL
@@ -217,13 +236,55 @@ Feel free to copy paste code and change it to your liking as it will help you un
 
 ## Frontend Dev
 
+### Very Important: Loading
+All files that you want to serve to the user are called static files and should be located under a child directory of any /static/ directory.
+Prior to production these files are compiled into a directory called staticfiles and then served to the user.
+It is important to follow the directory structure provided as any directory in the whole project named static will have all of its children combined into the single directory staticfiles, hence the structure app_name/static/app_name/components as that will become staticfiles/appname/components.
+If you have any conflicting files (with the same name and path, the built WILL fail)
+eg: 
+app_name_1/static/app_name_1/components/comp_A => staticfiles/app_name_1/components/comp_A
+app_name_2/static/app_name_1/components/comp_A => staticfiles/app_name_1/components/comp_A
+
+### The Root
+The root component to be served to the user is defined in webpack.config.js under entry.main
+You Can still serve other html files that have nothing to do with the application, such as the login form (default to django but can be modified)
+Webpack will monitor any changes you make to the react files which are referenced from the root (ie. somehow dependent via imports direct or indirect) and the webpage localhost:8000 will automatically reload upon such changes. You can also refresh by typing `rs` after the npm start command.
+
+### Imports / Bootstrap
+You can use standard react, and any bootstrap you wish, just install things via npm, some default things have been included you can expand or remove things as you wish. Please make sure to user `npm i your_module --save` as this wil add it to the package.json file.
+
+### lang.js
+Today most implementation need various languages, Hence I have added a lang.js file,
+Simply use the language codes (four already provided) and the user will be able to switch between languages, and they should be loaded dynamically by each component. use lang when writing words if you want to use this functionality, examples are provided in the header/example_page file.
+You can add more language codes in the settings file (LANGUAGES).
+using lang early will save you time later, and will make translation easier.
 
 
+###Styling
+In order to prevent styles overwriting each other,
+Each component has a style.scss. The root div and style of each component should have the name of the component
+and all following styles should be contained within;
+This way only child components of said componet will be affected.
+```
+Component/style.scss: 
+.Component{
+    someStyle:
+    AnotherComponentUsedWithin{
+    }
+}
+-----------------------------------
+Component/index.js:
+render(){
+    return(
+            <div className={'Component'}
+                <AnotherComponentUsedWithin/>
+            <div>
+        )
+}
 
 
-
-
-
-
+```
+These is my advice having gone through many issues with other techniques, this keeps things clean
+and easy to understand, it also prevents issues.
 
 

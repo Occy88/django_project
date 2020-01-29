@@ -30,7 +30,9 @@ class Header extends React.Component {
             company: DEFAULT_COMPANY,
 
             links: [
-                {'url': 'dashboard', id: 1, 'text': 'Dashboard'},
+                {'url': 'dashboard', 'text': 'Dashboard'},
+                {'url': 'example', 'text': 'Example Page'},
+
             ]
         };
         console.log(this.state.company);
@@ -106,7 +108,7 @@ class Header extends React.Component {
             </div>;
         let url_list = serve_scan_page_only ? [this.state.links[3]] : this.state.links;
         let link_list = url_list.map((obj, index) =>
-            <div key={obj.id}
+            <div key={index}
                  className={(location.pathname === app_url_prefix + obj.url) ? "nav-link active" : "nav-link"}
                  onClick={() => this.redirect(app_url_prefix + obj.url)}>
                 {obj.text}
