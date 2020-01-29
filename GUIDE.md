@@ -108,7 +108,7 @@ project_name/
 #### app_name/app_name/settings.py
 Although the file is moderately well anotated I will go through the important sections.
 
-#####ENV_ROLE: 
+##### ENV_ROLE: 
 I added this as a flag for development or running on heroku. Before pushing to heroku flag should be set to production.
 Common issues: 
 If you run the project in Production on your local machine, it will auto redirect you to https://localhost:8000
