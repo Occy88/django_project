@@ -1,7 +1,7 @@
 # Django Beginners Guide
 Side notes:
-I am LAZY, so please tell me if there are issues or tips during installation/ spelling etc. you would like to add, feel free to contribute to this guide formatting and more.
-Please tell me if you want me to add short tutorials on specific things, If I deem it not something that is valid (for basic understanding) I will add the tutorial here with an example in the base project
+I am LAZY ;-), so please tell me if there are issue/tips whilst reading/installing such as common erros or spelling mistakes etc. you would like to add, feel free to contribute to this guide, such as formatting and more.
+Please tell me if you want me to add short tutorials on specific things, If I deem it something that is valid (for basic understanding) I will add the tutorial here with an example in the base project
 If you run into problems during installation lets fix them together and update this guide. 
 ## Introduction
 This guide is meant for people who have little or no exposure to django. It is meant as a quick get started guide on a pre-configured project
