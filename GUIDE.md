@@ -155,6 +155,7 @@ the database tables (models) are defined in the project_name/app_name/models.py
 We are using Django rest api to facilitate serving of the data and making the whole project more managable.
 Each model has a serialization for the model located in: project_name/app_name/serializers.py
 we use this class to serve the data to the user and populating the database. These are imported in the views file where the request is handled. Further details and tutorials available on the Django rest api website, however the provided examples should facilitated this process as they are already functional.
+
 #### Services
 Each model should have a static file for services (if you are using the models within this web app and not
 just setting up an api)
@@ -274,7 +275,7 @@ You can add more language codes in the settings file (LANGUAGES).
 using lang early will save you time later, and will make translation easier.
 
 
-###Styling
+### Styling
 In order to prevent styles overwriting each other,
 Each component has a style.scss. The root div and style of each component should have the name of the component
 and all following styles should be contained within;
