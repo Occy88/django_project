@@ -202,9 +202,20 @@ for pushing to production:
 `git push`
 `git push heroku master`
 
-7. setup the database
+7. setup the database (Linux)
+=======================================================
+Note for Windows and Mac:
+Windows:
+you should install pgadmin and do this via the gui (creating a database and user), always test it and read the errors, it may be that you may not need to go through this, try skipping this step, worst case an error will pop up during migrations.
+Mac/OSX:
+This is painful, but not so much.
+You will need brew,
+and follow instructions somewhere (will update here later) on how to install postgres, after
+that it is similar to linux.
+=========================================================
 If you are using Postgres (following tutorials on postgres):
 create a database as defined in project_name/project_name/settings.py: DATABASES: name
+`sudo apt-get install postgresql` (not sure about this one just install via package manager or whatever)
 `psql -U postgres`
 `create database django_project_database`
 `create user django_project_user with password 'password'`
