@@ -13,16 +13,19 @@ export default class DashboardGrid extends React.Component {
 
     render() {
         console.log("here");
+        console.log("[===============[ SCREEN ]===============")
+        console.log(screen.width);
         return (
             <div className={'DashboardGrid'}>
 
                     <ResponsiveGridLayout
-                        rowHeight={100}
-                        breakpoints={{res5000: 10000}}
-                        cols={{res5000: 10000 / 100}}
-                        compactType={null}
+                        rowHeight={screen.height/10}
+                        breakpoints={{res: 4}}
+                        cols={{res: 4}}
+                        compactType={'vertical'}
                         draggableCancel={'.nonDraggable'}
                         autoSize={true}
+                        verticalCompact={true}
                         onWidthChange={() => {
                             return null
                         }}

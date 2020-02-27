@@ -1,5 +1,4 @@
 import React from 'react'
-import Toolbar from "./Toolbar";
 import DashboardGrid from "./DashboardGrid";
 import "./style.scss";
 import _ from 'underscore'
@@ -48,11 +47,12 @@ export default class Dashboard extends React.Component {
             height = 4;
         }
         //if  position not provided, generate one.
-        if (!posX || !posY) {
+        if (posX == null || posY == null) {
             let pos = findSpace(this.state.componentDicts, 13, 13, width, height);
             posX = pos[0];
             posY = pos[1];
         }
+        console.log('creating')
         this.setState({
             componentDicts: this.state.componentDicts.concat({
                 component: component,
@@ -66,6 +66,56 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    /**
+     * component dicts should be a list in the same format
+     * as the specification for handleCreate
+     * @param componentDicts
+     */
+    handleCreateMultiple(componentDicts) {
+        let componentsToAdd = [];
+        for (let d of componentDicts) {
+            console.log(d);
+            // if id not provided generate it now
+            if (!d.id) {
+                d.id = uuid()
+            }
+            //if no height/ width provided, set it here.
+            if (!d.width || !d.height) {
+                d.width = 4;
+                d.height = 4;
+            }
+            //if  position not provided, generate one.
+            console.log(d.posX, d.posY);
+
+            if (d.posX == null || d.posY == null) {
+                let pos = findSpace(this.state.componentDicts.concat(componentsToAdd), 13, 13, d.width, d.height);
+                d.posX = pos[0];
+                d.posY = pos[1];
+            }
+            console.log(d.posX, d.posY);
+            componentsToAdd = componentsToAdd.concat({
+                component: d.component,
+                x: d.posX,
+                y: d.posY,
+                h: d.height,
+                w: d.width,
+                props: d.props,
+                id: d.id
+            })
+        }
+        this.setState({
+            componentDicts: this.state.componentDicts.concat(componentsToAdd)
+        })
+    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     this.scale();
+    // }
+
+    scale(time) {
+        console.log('resizing: ',time);
+        time = time ? time : 0;
+        setTimeout(()=>window.dispatchEvent(new Event('resize')), time);
+    }
 
     /**
      * Function to remove a component from the grid
@@ -79,13 +129,12 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className='Dashboard'>
-                <Toolbar handleCreate={this.handleCreate.bind(this)}/>
-                <DashboardGrid
-                    handleRemove={this.handleRemove}
-                    handleCreate={this.handleCreate}
-                    componentDicts={this.state.componentDicts}/>
-            </div>
+                <div className='Dashboard'>
+                    <DashboardGrid
+                            handleRemove={this.handleRemove}
+                            handleCreate={this.handleCreate}
+                            componentDicts={this.state.componentDicts}/>
+                </div>
         );
     }
 
