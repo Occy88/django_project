@@ -5,12 +5,12 @@ import {Link, withRouter} from 'react-router-dom'
 import languages from "./lang.js"
 import LanguageSelect from "../../../../../accounts/static/accounts/components/Languages";
 import AccountService from "../../../../../accounts/static/accounts/components/AccountService";
-import Dropdown from "../../../../../static/components/Dropdown";
 import hamburger_svg from '../../../../../static/img/Hamburger_icon.svg'
 import hamburger_active_svg from '../../../../../static/img/Hamburger_icon_active.png'
 import settings_svg from '../../../../../static/img/settings1.png'
 import settings_active_svg from '../../../../../static/img/settings1_active.png'
 import CompanyList from "../../../../../company_manager/static/company_manager/components/CompanyList";
+import Dropdown from "../../../../../static/remote_components/react_components/components/Dropdown";
 
 let lang = languages[document.documentElement.lang];
 
@@ -106,7 +106,7 @@ class Header extends React.Component {
                         }/>
                 </div>
             </div>;
-        let url_list = serve_scan_page_only ? [this.state.links[3]] : this.state.links;
+        let url_list = this.state.links;
         let link_list = url_list.map((obj, index) =>
             <div key={index}
                  className={(location.pathname === app_url_prefix + obj.url) ? "nav-link active" : "nav-link"}

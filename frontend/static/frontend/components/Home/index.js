@@ -1,8 +1,8 @@
 import React from "react";
 import './style.scss'
-import Toolbar from "../../../../../static/components/Toolbar";
-import Dashboard from "../../../../../static/components/Dashboard";
-import Routes from "../Routes";
+import Toolbar from "../../../../../static/remote_components/react_components/components/Toolbar";
+import Dashboard from "../../../../../static/remote_components/react_components/components/Dashboard";
+import ExamplePage from "../ExamplePage";
 
 /**
  * An Example of a simple widget to be used in the grid.
@@ -20,7 +20,7 @@ class Home extends React.Component {
         super(props);
         this.state = {
             dashboardComponents: [
-                {component: Routes, w: 2, h: 4, text: 'website :D'},
+                {component: ExamplePage, w: 2, h: 4, text: 'website :D'},
             ]
         };
         this.dashboard = React.createRef()
@@ -38,19 +38,19 @@ class Home extends React.Component {
     pregenWidgets() {
         // component, id, posX, posY, width, height, props
         this.dashboard.current.handleCreateMultiple(
-                [
-                    {component: Routes, id: null, posX: 0, posY: 0, width: 2, height: 4, props: null},
-                ])
+            [
+                {component: ExamplePage, id: null, posX: 0, posY: 0, width: 2, height: 2, props: null},
+            ])
     }
 
     render() {
         return (
-                <div className={'Home'}>
-                    <Toolbar onToggle={(time) => {
-                        this.dashboard.current.scale(time)
-                    }} componentDicts={this.state.dashboardComponents} onClick={this.generateWidget.bind(this)}/>
-                    <Dashboard ref={this.dashboard}/>
-                </div>
+            <div className={'Home'}>
+                <Toolbar onToggle={(time) => {
+                    this.dashboard.current.scale(time)
+                }} componentDicts={this.state.dashboardComponents} onClick={this.generateWidget.bind(this)}/>
+                <Dashboard ref={this.dashboard}/>
+            </div>
         )
     }
 

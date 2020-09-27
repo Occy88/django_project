@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from django.db import models
 from django.conf import settings
 from pydoc import locate
@@ -16,4 +16,7 @@ class Profile(models.Model):
     language = models.CharField(max_length=10,
                                 choices=settings.LANGUAGES,
                                 default=settings.LANGUAGE_CODE)
-    company = models.ForeignKey(locate(settings.ACCOUNTS_COMPANY_INSTANCE), default=1,on_delete=models.SET_NULL, null=True)
+    company = models.ForeignKey(locate(settings.ACCOUNTS_COMPANY_INSTANCE), default=1, on_delete=models.SET_NULL,
+                                null=True)
+
+

@@ -10,16 +10,28 @@
 <html style='margin:0;height:100%;width:100%' lang={{ language|safe }}>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.1, user-scalable=yes"/>
-    <title>Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fffffff">
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png"/>
+
+    <link crossorigin="use-credentials" rel="manifest" href="/manifest.webmanifest">
+    <title>Sample</title>
 </head>
 <body style='margin:0;height:100%;width:100%'>
 <script>
     {#    DECLARE THE STATIC URL TO BE USED WITHIN THE APPLICATION WHEN LOADING SERVER SAVED PERMANENT MEDIA (Not much for this project so it's enough#}
     let STATIC_URL = "{% get_static_prefix %}";
     let languages = {{ choices|safe }};
-    let serve_scan_page_only = {{ serve_scan_page_only|safe }};
     let DEFAULT_COMPANY = {{ company|safe }};
     if (DEFAULT_COMPANY !== null) {
         DEFAULT_COMPANY['str'] = DEFAULT_COMPANY.fields.name;
@@ -27,11 +39,18 @@
         DEFAULT_COMPANY.name = DEFAULT_COMPANY.fields.name;
         DEFAULT_COMPANY['sort'] = DEFAULT_COMPANY.fields.name;
     }
-    console.log(DEFAULT_COMPANY)
 </script>
 <div id="app" class="App">
 
 </div>
 <script src="{% static 'main.js' %}"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then(function () {
+                console.log("Service Worker Registered");
+            });
+    }</script>
 </body>
 </html>

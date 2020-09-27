@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.conf import settings
 from accounts.models import Profile
+from django.contrib.auth.models import User
 import json
 from pydoc import locate
 from django.core import serializers
@@ -11,27 +12,48 @@ from rest_framework import generics
 # Create your views here.
 
 class ServeApp(View):
-    def get(self, request):
+    def check_create_profile(self, user):
+        print("checking user profile...")
+
         try:
-            profile=request.user.profile
+            profile = user.profile
         except Exception as e:
-            profile=Profile.objects.create(user=request.user)
-        if (profile.company == None):
-            company_obj = locate(settings.COMPANY_INSTANCE).objects.get(name='some_company')
-            profile.company=company_obj
-            profile.save()
-        else:
-            company_obj = json.loads(serializers.serialize('json', [request.user.profile.company, ]))[0]
+            try:
+                print('user has no profile, creating one :D')
+                profile = Profile.objects.create(user=user)
+                if (profile.company == None):
+                    company_obj = locate(settings.COMPANY_INSTANCE).objects.get(name='some_company')
+                    profile.company = company_obj
+                    profile.save()
+                print("profile created :D")
+            except:
+                print("wrong user type")
+
+    def get_company(self, user):
+        try:
+            company_obj = json.loads(serializers.serialize('json', [user.profile.company, ]))[0]
             company_obj.update({'id': company_obj['pk']})
-        serve_scan_page_only = request.user.groups.all().filter(name="Scan Group").__len__() is not 0
-        if serve_scan_page_only:
-            serve_scan_page_only = 'true'
-        else:
-            serve_scan_page_only = 'false'
+        except:
+            company_obj = locate(settings.COMPANY_INSTANCE).objects.get(name='some_company')
+            company_obj = json.loads(serializers.serialize('json', [company_obj, ]))[0]
+            company_obj.update({'id': company_obj['pk']})
+        return company_obj
+
+    def get_languages(self, user):
+        try:
+            return user.profile.language
+        except:
+            return 'en-us'
+
+    def get(self, request):
+        print(request.user)
+        self.check_create_profile(request.user)
+        language = json.dumps(self.get_languages(request.user))
+        choices = json.dumps(settings.LANGUAGES)
+        company = json.dumps(self.get_company(request.user))
+
         return render(request, '../templates/root.html',
                       context={
-                          "serve_scan_page_only": serve_scan_page_only,
-                          "language": json.dumps(request.user.profile.language),
-                          "choices": json.dumps(settings.LANGUAGES),
-                          "company": json.dumps(company_obj)})
-
+                          "language": language,
+                          "choices": choices,
+                          "company": company})

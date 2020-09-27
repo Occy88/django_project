@@ -167,8 +167,13 @@ STAFF_URLS = {
     r'^accounts/manager/[\s\S]*',
 }
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/django_project/'
+LOGIN_REDIRECT_URL = '/django_project'
 LOGIN_EXEMPT_URLS = {
+    '/',
+    '',
+    'sw.js',
+    'manifest.webmanifest',
+    'icons/*'
 }
 
 REST_FRAMEWORK = {

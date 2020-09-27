@@ -8,18 +8,23 @@ probably something along the lines of brew install postgresql
 Make sure you create a database according the the specifications in
 django_project/settings.py.
 (user and database should be created manualy)
+install postgresql if you want to use that (recommended); (look online)
+Login to psql if that's what you are using:
+psql -U postgres
 in psql: 
-create database "db name"
-create user "username" with password 'password'
+create database "chosen db name (in settings.py)"
+create user "username (in settings.py)" with password 'password (in settings.py)'
+
+Make sure to surround the relevant attributes with quotes only replace what is inside the quotes.
 
 For the general user:
 Linux:
 virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-./scripts/migrate.sh
-./scripts/createsuperuser.sh
-./scripts/run.sh
+./scripts/migrate.sh  (run this a couple times if there are any errors first time, you may get errors if there are dependencies)
+./scripts/createsuperuser.sh   (creates the user with which you can login on http:...../admin
+./scripts/run.sh   (starts the server)
 
 in another tab:
 npm i; npm start

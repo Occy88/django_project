@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ListSelect from '../../../../../static/components/ListSelect'
+import ListSelect from '../../../../../static/remote_components/react_components/components/ListSelect'
 import CompanyService from '../CompanyService'
 
 /**
@@ -24,15 +24,16 @@ class CompanyList extends React.Component {
         console.log("GETTING DATA");
         CompanyService.getCompanies({is_active: 'True'}).then(d => {
             if (this.mounted) {
-                this.setState({
-                    company_data: d
-                });
-                console.log("GOTTEN DATA: ");
-                console.log(d);
-
-
+                if (typeof d !== Array) {
+                    this.setState({
+                        company_data: []
+                    })
+                } else {
+                    this.setState({
+                        company_data: d
+                    });
+                }
             }
-
         })
     }
 
@@ -40,14 +41,11 @@ class CompanyList extends React.Component {
         if (!this.state.company_data) return <div style={{display: 'inline-block'}}>N/A</div>;
         return (
             <div>
-                <ListSelect default={DEFAULT_COMPANY} filter={false} object_list={this.state.company_data.map(obj => {
-                    var rObj = {};
-                    rObj = obj;
-                    console.log("in for for companies: ", obj.name);
-                    rObj["str"] = obj.name;
-                    rObj["sort"] = obj.name;
-                    return rObj;
-                })} handleSelect={this.props.changeCompany}/>
+                <ListSelect default={DEFAULT_COMPANY} filter={false} object_list={this.state.company_data}
+                            id_key={'name'}
+                            str_key={'name'}
+                            sort_key={'name'}
+                            handleSelect={this.props.changeCompany}/>
             </div>
         )
     }
