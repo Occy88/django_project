@@ -1,6 +1,6 @@
 const languages = {
     'en-us': {
-        example_text: 'Now serving the example page, Project is online and functional'
+        example_text: 'Posts'
     },
     'fr': {
         example_text: 'salut page examplaire'

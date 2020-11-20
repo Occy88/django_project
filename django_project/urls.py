@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('company_manager/', include('company_manager.urls')),
+    path('post_manager/', include('post_manager.urls')),
     path('accounts/', include('accounts.urls')),  # new
     path('', include('frontend.urls')),
 

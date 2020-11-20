@@ -24,11 +24,8 @@ if (STATIC_URL === undefined) {
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        console.log('DEFAULE COMPANY: ==================', DEFAULT_COMPANY)
         this.state = {
             width: 0, height: 0,
-            company: DEFAULT_COMPANY,
-
             links: [
                 {'url': 'dashboard', 'text': 'Dashboard'},
                 {'url': 'example', 'text': 'Example Page'},
@@ -90,8 +87,6 @@ class Header extends React.Component {
                         button_fill={<img style={{width: '30px'}}
                                           src={STATIC_URL + settings_svg}/>}
                         item_list={[
-                            <div className='nav-item-content'>
-                                <CompanyList changeCompany={this.selectCompany.bind(this)}/></div>,
                             <div className='nav-item-content'>
                                 <LanguageSelect/>
                             </div>,

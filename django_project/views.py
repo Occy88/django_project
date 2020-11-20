@@ -3,7 +3,7 @@ from .default_database_objects import *
 
 
 def login_redirect(request):
-    return redirect('/accounts/login')
+    return redirect('/accounts/login/')
 
 
 def view_404(request,exception):

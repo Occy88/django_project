@@ -1,6 +1,8 @@
 import React from 'react'
 import languages from "./lang.js";
 import './style.scss';
+import PostList from "../../../../../post_manager/static/company_manager/components/CompanyList";
+import PostService from "../../../../../post_manager/static/company_manager/components/CompanyService";
 
 let lang = languages[document.documentElement.lang];
 /**
@@ -13,15 +15,31 @@ export default class ExamplePage extends React.Component {
         super(props);
         this.state = {
             example_state: props.example_state,
+            post: null
         }
     }
 
+    create(title) {
+        PostService.getPostWIthImages
+        PostService.registerPost()
+        PostService.getCompanies({is_active:true}).then()
+    }
+
+    changePost(newpost) {
+        this.setState({
+            post: newpost
+        })
+    }
 
     render() {
         return (
-            <div className={'ExamplePage'}>
-                {lang.example_text}
-            </div>
+                <div className={'ExamplePage'}>
+                    <PostList handleSelect={this.changePost.bind(this)}/>
+                    {lang.example_text}
+                    SELECTED:
+                    {this.state.post}
+                    <input onChange={this.create.bind(this)}/>
+                </div>
         )
     }
 }

@@ -50,10 +50,8 @@ class ServeApp(View):
         self.check_create_profile(request.user)
         language = json.dumps(self.get_languages(request.user))
         choices = json.dumps(settings.LANGUAGES)
-        company = json.dumps(self.get_company(request.user))
 
         return render(request, '../templates/root.html',
                       context={
                           "language": language,
-                          "choices": choices,
-                          "company": company})
+                          "choices": choices})

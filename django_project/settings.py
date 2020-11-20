@@ -54,7 +54,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 ADMINS = (('your_name', 'your_email'),)
 INSTALLED_APPS = [
-    'company_manager.apps.CompanyManagerConfig',
+    'post_manager.apps.PostManagerConfig',
     'accounts.apps.AccountsConfig',
     'frontend.apps.FrontendConfig',
     'django.contrib.admin',
@@ -169,8 +169,8 @@ STAFF_URLS = {
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/django_project'
 LOGIN_EXEMPT_URLS = {
-    '/',
-    '',
+    # '/',
+    # '',
     'sw.js',
     'manifest.webmanifest',
     'icons/*'

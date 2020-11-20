@@ -3,13 +3,6 @@ from pydoc import locate
 from django.conf import settings
 
 try:
-    print("CREATING DEFAULT COMPANY (some_company)")
-    company_model = locate(settings.COMPANY_INSTANCE)
-    some_company = company_model.objects.get_or_create(name="some_company")
-    print(some_company)
-    print(some_company[0].logo)
-    some_company[0].logo = 'company_manager/logo/some_company.png'
-    some_company[0].save()
     print("CREATING DEFAULT GROUPS")
     from django.db.models import Q
 
