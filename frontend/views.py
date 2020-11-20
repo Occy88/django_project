@@ -13,8 +13,8 @@ from rest_framework import generics
 
 class ServeApp(View):
     def check_create_profile(self, user):
-        print("checking user profile...")
-
+        print("Serving app...")
+        print("Checking user has profile")
         try:
             profile = user.profile
         except Exception as e:
@@ -29,15 +29,6 @@ class ServeApp(View):
             except:
                 print("wrong user type")
 
-    def get_company(self, user):
-        try:
-            company_obj = json.loads(serializers.serialize('json', [user.profile.company, ]))[0]
-            company_obj.update({'id': company_obj['pk']})
-        except:
-            company_obj = locate(settings.COMPANY_INSTANCE).objects.get(name='some_company')
-            company_obj = json.loads(serializers.serialize('json', [company_obj, ]))[0]
-            company_obj.update({'id': company_obj['pk']})
-        return company_obj
 
     def get_languages(self, user):
         try:

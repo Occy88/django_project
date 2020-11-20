@@ -25,7 +25,7 @@ class PostList(generics.ListCreateAPIView):
         # return Company.objects.all()
 
 
-class PostDetail(generics.ListCreateAPIView):
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     This returns the serialized list of companies to which the user
     has permission, i.e. user checked against each company
@@ -52,23 +52,19 @@ class ImageList(generics.ListCreateAPIView):
         :return:
         """
         data = query_to_dict_clean(self.request.query_params)
-        queryset = Post.objects.all().filter(**data)
+        queryset = Image.objects.all().filter(**data)
         return queryset
 
         # return Company.objects.all()
 
 
-class ImageDetail(generics.ListCreateAPIView):
+class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     This returns the serialized list of companies to which the user
     has permission, i.e. user checked against each company
 
     """
     serializer_class = ImageSerializer
-
-    def get_queryset(self):
-        queryset = Post.objects.filter(pkid=self.kwargs.get('id'), )
-        return queryset
 
 
 class PostDetailWithImages(generics.ListCreateAPIView):
