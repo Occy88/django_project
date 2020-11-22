@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import PostService from '../PostService'
 // import languages from "./lang.js";
-// import './style.css';
+import './style.scss';
 import Post from "../Post";
 import PostList from "../PostList";
 import Button from "../../../../../static/remote_components/react_components/components/Button";
@@ -71,7 +71,7 @@ class PostForm extends React.Component {
 
     render() {
         return (
-                <div>
+                <div className={'PostForm'}>
                     <PostList handleSelect={this.updatePostState.bind(this)}/>,
                     <Post onChange={this.updatePostState.bind(this)}
                           post={this.state.post} modify={true}/>,
