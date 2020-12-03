@@ -46,14 +46,14 @@ class LoginRequiredMiddleware:
         #     if not any(url.match(path) for url in EXEMPT_URLS):
         #         return redirect(settings.LOGIN_URL)
 
-        print(path)
-        url_is_exempt = path in settings.LOGIN_EXEMPT_URLS
+        url_is_exempt = any(url.match(path) for url in EXEMPT_URLS)
+        if path == '':
+            url_is_exempt=True
         url_is_for_staff_only = any(url.match(path) for url in STAFF_URLS)
 
         if path == reverse('accounts:logout').lstrip('/'):
             logout(request)
         # if not request.user.is_staff and url_is_for_staff_only:
         #     return views.company_manager_redirect(request)
-        print(url_is_exempt)
         if not request.user.is_authenticated and not url_is_exempt:
             return views.login_redirect(request)

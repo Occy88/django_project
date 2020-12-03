@@ -16,17 +16,14 @@ def generic_serializer(model, related_many_serializers=[]):
 
     class GenericSerializer(serializers.ModelSerializer):
         class Meta:
-            print("=========================================")
             model = Model
             fields = [str(h).split('.')[2] for h in model._meta.fields] + names
-            print(fields)
 
         def create(self, validated_data):
             """
             Create and return a new `supplier` instance, given the validated data.
             """
             # validated_data.pop('shipments', None)
-            print('====================')
             return self.Meta.model.objects.create(**validated_data)
 
     c = GenericSerializer

@@ -171,7 +171,6 @@ STAFF_URLS = {
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/home/'
 LOGIN_EXEMPT_URLS = {
-    '',
     'favicon.ico',
     'sw.js',
     'accounts/login/',
