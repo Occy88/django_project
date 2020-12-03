@@ -228,10 +228,14 @@ Note: you will need to modify this script when you create new apps,
 9. create a super user
 `./scripts/createsuperuser.sh`
 
-10. Start the project:
-`./scripts/run.sh`
-and in a new window:
-`npm start`
+10. Frontend (optional but required for code that is running)
+initiate and pull submodules:
+`git submodule update --init --recursive`
+
+11. npm install
+12. npm start
+13. (in sourced enviroment, new window) `./scripts/run.sh`
+
 open a web browser and go to http://localhost:8000
 
 ### Quick tips
