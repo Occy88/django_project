@@ -1,6 +1,3 @@
-import json
-
-from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.http.response import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
@@ -21,16 +18,12 @@ class RedirectHome(View):
 class ServeApp(View):
     def get(self, request):
         if type(request.user == AnonymousUser):
-            return render(request, '../templates/index.html',
-                          context={"language": json.dumps('en-us')})
+            return render(request, '../templates/index.html')
         try:
             profile = request.user.profile
         except Exception as e:
             profile = Profile.objects.create(user=request.user)
-        return render(request, '../templates/index.html',
-                      context={
-                          "language": json.dumps(request.user.profile.language),
-})
+        return render(request, '../templates/index.html')
 
 
 class ToolList(generics.ListCreateAPIView):

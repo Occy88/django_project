@@ -17,6 +17,7 @@ export default class Routes extends React.Component {
 
 
     render() {
+        console.log("SERVING EXAMPLE PAGE")
         return (
             <Router>
                 <Header

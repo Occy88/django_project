@@ -75,7 +75,7 @@ WEBPACK_LOADER = {
 }
 
 MIDDLEWARE = [
-    # 'django_project.middleware.LoginRequiredMiddleware',
+    'django_project.middleware.LoginRequiredMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -171,6 +171,17 @@ STAFF_URLS = {
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/home/'
 LOGIN_EXEMPT_URLS = {
+    '',
+    'favicon.ico',
+    'sw.js',
+    'accounts/login/',
+    'accounts/languages',
+    'accounts/current',
+    'manifest.webmanifest',
+    'icons/favicon.ico',
+    'accounts/languages/current',
+    'dashboard'
+
 }
 
 REST_FRAMEWORK = {
