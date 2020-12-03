@@ -13,16 +13,16 @@ self.addEventListener('install', function (event) {
                     })
     );
 });
-self.addEventListener('fetch', function (event) {
-    event.respondWith(
-            caches.open('seclea-cache-v1').then(function (cache) {
-                return fetch(event.request).then(function (response) {
-                    cache.put(event.request, response.clone());
-                    return response;
-                });
-            })
-    );
-});
+// self.addEventListener('fetch', function (event) {
+//     event.respondWith(
+//             caches.open('seclea-cache-v1').then(function (cache) {
+//                 return fetch(event.request).then(function (response) {
+//                     cache.put(event.request, response.clone());
+//                     return response;
+//                 });
+//             })
+//     );
+// });
 self.addEventListener('activate', function (event) {
     event.waitUntil(
             caches.keys().then(function (cacheNames) {

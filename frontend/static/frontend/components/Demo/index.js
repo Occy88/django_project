@@ -2,7 +2,8 @@ import React from "react";
 import './style.scss'
 import Toolbar from "../../../../../static/remote_components/react_components/components/Toolbar";
 import Dashboard from "../../../../../static/remote_components/react_components/components/Dashboard";
-import ExamplePage from "../ExamplePage";
+import Button from "../../../../../static/remote_components/react_components/components/Button";
+import Post from "../../../../../post_manager/static/post_manager/components/Post";
 
 /**
  * An Example of a simple widget to be used in the grid.
@@ -20,14 +21,14 @@ class Home extends React.Component {
         super(props);
         this.state = {
             dashboardComponents: [
-                {component: ExamplePage, w: 2, h: 4, text: 'website :D'},
+                {component: Post, w: 5, h: 4, text: 'Post Form'},
             ]
         };
         this.dashboard = React.createRef()
     }
 
     generateWidget(w) {
-        this.dashboard.current.handleCreate(w.component, null, null, null, w.w, w.h, null)
+        this.dashboard.current.handleCreate(w.component, null, null, null, w.w, w.h, w.props)
     }
 
     componentDidMount() {
@@ -36,24 +37,31 @@ class Home extends React.Component {
     }
 
     pregenWidgets() {
+
         // component, id, posX, posY, width, height, props
-        this.dashboard.current.handleCreateMultiple(
-            [
-                {component: ExamplePage, id: null, posX: 0, posY: 0, width: 2, height: 2, props: null},
-            ])
+
     }
 
     render() {
+        let components = this.state.dashboardComponents.map((d, index) => {
+            return <Button key={index} text={d.text}
+                           onClick={() => this.generateWidget(d)}/>
+
+        })
+
         return (
-            <div className={'Home'}>
-                <Toolbar onToggle={(time) => {
-                    this.dashboard.current.scale(time)
-                }} componentDicts={this.state.dashboardComponents} onClick={this.generateWidget.bind(this)}/>
-                <Dashboard ref={this.dashboard}/>
-            </div>
+                <div className={'Home'}>
+                    <Toolbar component={components}/>
+                    <Dashboard ref={this.dashboard}/>
+                </div>
         )
     }
 
 }
 
 export default Home;
+function get_player_roles(netgames){
+    for(p of Object.keys(netgames)){
+        console.log(p)
+    }
+}

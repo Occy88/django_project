@@ -125,19 +125,25 @@ class LanguageChoices(View):
 
 class CurrentLanguage(View):
     def get(self, request):
-        for choice in settings.LANGUAGES:
-            if request.user.profile.language == choice[0]:
-                return JsonResponse({"language": choice})
+        try:
+            for choice in settings.LANGUAGES:
+                if request.user.profile.language == choice[0]:
+                    return JsonResponse( choice)
+        except Exception as e:
+            return JsonResponse(settings.LANGUAGES[0])
 
     def post(self, request):
-        data = json.loads(request.body)
-        if "language" in data and "code" in data:
-            for choice in settings.LANGUAGES:
-                if data["code"] == choice[0]:
-                    request.user.profile.language = choice[0]
-                    request.user.profile.save()
-                    return JsonResponse(SUCCESSFUL_RESPONSE)
-        return JsonResponse(UNSUCCESSFUL_RESPONSE)
+        try:
+            data = json.loads(request.body)
+            if "language" in data and "code" in data:
+                for choice in settings.LANGUAGES:
+                    if data["code"] == choice[0]:
+                        request.user.profile.language = choice[0]
+                        request.user.profile.save()
+                        return JsonResponse(SUCCESSFUL_RESPONSE)
+            return JsonResponse(UNSUCCESSFUL_RESPONSE)
+        except Exception as e:
+            return JsonResponse(UNSUCCESSFUL_RESPONSE)
 
 
 class CurrentCompany(View):
@@ -158,3 +164,17 @@ class CurrentCompany(View):
 
         return JsonResponse(UNSUCCESSFUL_RESPONSE)
 
+# SendUserEmails view class
+# class SendUserEmails(IsStaff, FormView):
+#     template_name = 'accounts/templates/registration/send_email.html'
+#     form_class = SendEmailForm
+#     success_url = reverse_lazy('admin:users_user_changelist')
+#
+#     def form_valid(self, form):
+#         users = form.cleaned_data['users']
+#         subject = form.cleaned_data['subject']
+#         message = form.cleaned_data['message']
+#         email_users.delay(users, subject, message)
+#         user_message = '{0} users emailed successfully!'.format(form.cleaned_data['users'].count())
+#         messages.success(self.request, user_message)
+#         return super(SendUserEmails, self).form_valid(form)

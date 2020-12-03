@@ -1,9 +1,7 @@
 import React from 'react'
 import languages from "./lang.js";
 import './style.scss';
-import PostForm from "../../../../../post_manager/static/post_manager/components/PostForm";
 
-let lang = languages[document.documentElement.lang];
 /**
  * This module only takes care of registering a delivery and products for it in one go.
  * Once all fields are filled, first for is submitted to create a delivery, if successful
@@ -14,15 +12,17 @@ export default class ExamplePage extends React.Component {
         super(props);
         this.state = {
             example_state: props.example_state,
-            post: null
         }
     }
 
+
     render() {
+        let lang = languages[document.documentElement.lang];
+
         return (
-                <div className={'ExamplePage'}>
-                    <PostForm/>
-                </div>
+            <div className={'ExamplePage'}>
+                {lang.example_text}
+            </div>
         )
     }
 }

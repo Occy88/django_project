@@ -7,7 +7,6 @@ import Post from "../Post";
 import PostList from "../PostList";
 import Button from "../../../../../static/remote_components/react_components/components/Button";
 
-let lang = languages[document.documentElement.lang];
 
 /**
  * Receives a post_for id and a post id,
@@ -70,6 +69,7 @@ class PostForm extends React.Component {
     }
 
     render() {
+
         return (
                 <div className={'PostForm'}>
                     <PostList handleSelect={this.updatePostState.bind(this)}/>,

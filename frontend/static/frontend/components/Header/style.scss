@@ -40,7 +40,9 @@
   .nav-brand {
     width: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    padding: 5px;
+
   }
 
   .nav-links {
@@ -52,6 +54,7 @@
     display: flex;
     justify-content: center;
     min-width: 200px;
+    cursor: pointer;
   }
 
   .nav-link {
