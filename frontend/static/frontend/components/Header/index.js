@@ -25,7 +25,7 @@ class Header extends React.Component {
             width: 0, height: 0,
             links: [
                 {'url': 'dashboard', id: 1, 'text': 'Dashboard'},
-                {'url': '', id: 1, 'text': 'Home'},
+                {'url': '', id: 2, 'text': 'Home'},
 
             ]
         };
