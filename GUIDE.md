@@ -183,16 +183,17 @@ recurrences as this will crash your web server, if you require an example of suc
 1. Clone the repo: https://github.com/Occy88/django_project.git
 2. Open the project in your development environment of choice, I recommend Pycharm.
 3. Open the project in your terminal window
-4. setup the virtual environment: 
+4. Mac only - you need to do a little extra work. `brew install postgres; brew services start postgres; export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/` This will allow psycopg2 to be installed.
+5. Setup the virtual environment: 
 `virtualenv venv; source venv/bin/activate; pip3 install -r requiremnts.txt;`
-5. change any string matching "django_project" in the whole project to a name of your choice say "your_project"
+6. Change any string matching "django_project" in the whole project to a name of your choice say "your_project"
 (ctrl+shift+r) in Pycharm
 Also rename all directories matching django_project to the choice for your project.
 Link the project to your github:
 rm -rf .git
 git init
-follow the rest of the instructions on github or your choice of hosting platform
-6. initiate a heroku app you would like to link your project to: 
+Follow the rest of the instructions on github or your choice of hosting platform
+7. Initiate a heroku app you would like to link your project to: 
 `heroku create your_project`
 `heroku git:remote -a your_project`
 `heroku config:set DISABLE_COLLECTSTATIC=1`
@@ -203,7 +204,7 @@ for pushing to production:
 `git push`
 `git push heroku master`
 
-7. setup the database (Linux)
+8. Setup the database (Linux)
 =======================================================
 Note for Windows and Mac:
 Windows:
@@ -211,7 +212,7 @@ you should install pgadmin and do this via the gui (creating a database and user
 Mac/OSX:
 This is painful, but not so much.
 You will need brew,
-and follow instructions somewhere (will update here later) on how to install postgres, after
+and follow instructions above on how to install postgres, after
 that it is similar to linux.
 =========================================================
 If you are using Postgres (following tutorials on postgres):

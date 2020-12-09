@@ -1,7 +1,10 @@
+# python module files
 */__pycache__
 __pycache__
+# Pycharm files
 */.idea
 .idea
+
 */__init__.py
 __init__.py
 docs
@@ -11,5 +14,10 @@ dist
 */dist
 */migrations
 migrations
-venv
 
+# pyenv file
+.python-version
+
+# npm gnerated files
+webpack-stats.json
+package-lock.json
