@@ -17,4 +17,4 @@ fi
 # run migrations each time - does nothing if db is all set up already.
 python manage.py migrate
 
-gunicorn exscientia_challenge.wsgi:application --bind 0.0.0.0:8080
+gunicorn django_project.wsgi:application --bind 0.0.0.0:8080

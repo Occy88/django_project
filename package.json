@@ -1,5 +1,5 @@
 {
-  "name": "exscientia_challenge",
+  "name": "django_project",
   "version": "0.0.1",
   "description": "Example website to demonstrate working with data",
   "main": "index.js",
@@ -63,12 +63,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rogermilroy/exscientia_challenge.git"
+    "url": "git+https://github.com/rogermilroy/django_project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rogermilroy/exscientia_challenge/issues"
+    "url": "https://github.com/rogermilroy/django_project/issues"
   },
-  "homepage": "https://github.com/rogermilroy/exscientia_challenge#readme"
+  "homepage": "https://github.com/rogermilroy/django_project#readme"
 }

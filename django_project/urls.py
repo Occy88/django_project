@@ -24,4 +24,4 @@ urlpatterns = [
     path('', include('frontend.urls')),
 ]
 
-# handler404 = 'exscientia_challenge.views.view_404'
+# handler404 = 'django_project.views.view_404'

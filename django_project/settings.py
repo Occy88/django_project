@@ -19,7 +19,7 @@ MASTER_BASE_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = open('exscientia_challenge/secret_key.txt').read()
+SECRET_KEY = open('django_project/secret_key.txt').read()
 # SECURITY WARNING: don't run with debug turned on in production!
 ENV_ROLE = 'production'
 # ENV_ROLE = 'development'
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'exscientia_challenge.urls'
+ROOT_URLCONF = 'django_project.urls'
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 TEMPLATES = [
     {
