@@ -1,0 +1,7 @@
+#dropdown-toggle {
+  display: none;
+}
+
+#dropdown-toggle:checked ~ #dropdown-menu {
+  display: block;
+}

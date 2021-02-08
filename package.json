@@ -1,0 +1,74 @@
+{
+  "name": "exscientia_challenge",
+  "version": "0.0.1",
+  "description": "Example website to demonstrate working with data",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "@babel/core": "*",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "@fortawesome/fontawesome-svg-core": "*",
+    "@fortawesome/free-solid-svg-icons": "*",
+    "@fortawesome/react-fontawesome": "*",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "babel-loader": "*",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "bulma": "^0.9.1",
+    "classnames": "*",
+    "compression-webpack-plugin": "^7.0.0",
+    "css-loader": "^5.0.1",
+    "d3": "^6.3.0",
+    "file-loader": "^6.2.0",
+    "jquery": "*",
+    "jss": "*",
+    "jsx": "^0.9.89",
+    "mdbreact": "^5.0.0",
+    "node-sass": "^5.0.0",
+    "nodemon": "*",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "*",
+    "react-idle-timer": "*",
+    "react-native-make": "*",
+    "react-resizable": "*",
+    "react-resize-detector": "*",
+    "react-router-dom": "*",
+    "react-scripts": "*",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "underscore": "*",
+    "uuid": "^8.3.1",
+    "webpack": "^5.10.0",
+    "webpack-bundle-tracker": "*",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "*"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1"
+  },
+  "scripts": {
+    "start": "nodemon -w webpack.config.js -x webpack serve --env mode",
+    "build": "webpack",
+    "postinstall": "patch-package && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogermilroy/exscientia_challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogermilroy/exscientia_challenge/issues"
+  },
+  "homepage": "https://github.com/rogermilroy/exscientia_challenge#readme"
+}

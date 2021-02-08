@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+
+<html style='margin:0;height:100%;width:100%' lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fffffff">
+
+    <title>Exscientia</title>
+</head>
+<body style='margin:0;height:100%;width:100%'>
+<script>
+    {#    DECLARE THE STATIC URL TO BE USED WITHIN THE APPLICATION WHEN LOADING SERVER SAVED PERMANENT MEDIA (Not much for this project so it's enough#}
+    let STATIC_URL = "{% get_static_prefix %}"
+</script>
+
+<div id="app" class="App">
+
+</div>
+
+<script type="application/javascript" src="{% static 'main.js' %}"></script>
+
+</body>
+</html>
