@@ -1,3 +1,0 @@
-[submodule "static/remote_components/react_components"]
-	path = static/remote_components/react_components
-	url = git@github.com:Occy88/react_components.git
