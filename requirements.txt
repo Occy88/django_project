@@ -9,7 +9,7 @@ django-heroku==0.3.1
 django-pipeline==1.6.14
 django-pipeline-browserify==0.6.2
 django-webpack-loader==0.6.0
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 gunicorn==19.9.0
 Markdown==3.1.1
 Pillow==6.1.0
